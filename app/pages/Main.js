@@ -11,8 +11,8 @@ export default class Main extends Component<{}> {
   renderItems = () =>
     items.map(row => (
       <Item
-        key={row.text}
-        text={row.text}
+        key={row.page}
+        text={row.page}
         onClick={() => this.clickItems(row)}
       />
     ));
@@ -22,7 +22,7 @@ export default class Main extends Component<{}> {
   }
 }
 
-const items = [{ text: 'Flip', page: 'Filp' }];
+const items = [{ page: 'Timing' }, { page: 'Filp' }];
 
 const styles = StyleSheet.create({
   container: {

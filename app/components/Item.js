@@ -37,7 +37,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     height: 56,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    borderTopWidth: 0.5,
+    borderColor: '#efefef'
   },
   text: {
     flex: 1,
