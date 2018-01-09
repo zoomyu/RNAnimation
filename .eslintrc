@@ -10,6 +10,8 @@
   "rules": {
     #禁止调用 console 对象的方法
     "no-console": 0,
+    "comma-dangle": ["error", "never"],
+    "function-paren-newline": 0,
     #当使用一个还未声明的标示符是会报警告。
     "no-use-before-define": 0,
     "react/prefer-stateless-function": 0,
