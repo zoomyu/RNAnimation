@@ -22,7 +22,7 @@ export default class Main extends Component<{}> {
   }
 }
 
-const items = [{ page: 'Timing' }, { page: 'Filp' }];
+const items = [{ page: 'Timing' }, { page: 'Spring' }, { page: 'Filp' }];
 
 const styles = StyleSheet.create({
   container: {
