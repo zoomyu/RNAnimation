@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import Item from '../components/Item';
 
 export default class Main extends Component<{}> {
-  clickItems = row => {
+  clickItems = (row) => {
     this.props.navigation.navigate(row.page, { name: row.page });
   };
 
@@ -22,7 +22,12 @@ export default class Main extends Component<{}> {
   }
 }
 
-const items = [{ page: 'Timing' }, { page: 'Spring' }, { page: 'Filp' }];
+const items = [
+  { page: 'Timing' },
+  { page: 'Spring' },
+  { page: 'Decay' },
+  { page: 'Filp' }
+];
 
 const styles = StyleSheet.create({
   container: {
