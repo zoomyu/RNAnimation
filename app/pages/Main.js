@@ -28,6 +28,8 @@ export default class Main extends Component<{}> {
       <View style={styles.container}>
         {this.renderTitle('Configuring Animations')}
         {this.renderItems(configuringAnimations)}
+        {this.renderTitle('Composing Animations')}
+        {this.renderItems(composingAnimations)}
         {this.renderTitle('Other Animations')}
         {this.renderItems(otherAnimations)}
       </View>
@@ -41,9 +43,9 @@ const configuringAnimations = [
   { page: 'Decay' }
 ];
 
-const otherAnimations = [
-  { page: 'Filp' }
-];
+const composingAnimations = [{ page: 'Delay' }];
+
+const otherAnimations = [{ page: 'Filp' }];
 
 const styles = StyleSheet.create({
   container: {
