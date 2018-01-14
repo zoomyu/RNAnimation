@@ -43,7 +43,7 @@ const configuringAnimations = [
   { page: 'Decay' }
 ];
 
-const composingAnimations = [{ page: 'Delay' }];
+const composingAnimations = [{ page: 'Delay' }, { page: 'Parallel' }];
 
 const otherAnimations = [{ page: 'Filp' }];
 
