@@ -7,6 +7,7 @@ import Decay from './pages/Animated_Decay';
 
 import Delay from './pages/Animated_Delay';
 import Parallel from './pages/Animated_Parallel';
+import Sequence from './pages/Animated_Sequence';
 import Filp from './pages/Filp';
 
 const Navigators = StackNavigator(
@@ -17,6 +18,7 @@ const Navigators = StackNavigator(
     Decay: { screen: Decay },
     Delay: { screen: Delay },
     Parallel: { screen: Parallel },
+    Sequence: { screen: Sequence },
     Filp: { screen: Filp }
   },
   {

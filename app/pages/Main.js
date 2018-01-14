@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
 
 import Item from '../components/Item';
 
@@ -25,14 +25,14 @@ export default class Main extends Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {this.renderTitle('Configuring Animations')}
         {this.renderItems(configuringAnimations)}
         {this.renderTitle('Composing Animations')}
         {this.renderItems(composingAnimations)}
         {this.renderTitle('Other Animations')}
         {this.renderItems(otherAnimations)}
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -43,7 +43,11 @@ const configuringAnimations = [
   { page: 'Decay' }
 ];
 
-const composingAnimations = [{ page: 'Delay' }, { page: 'Parallel' }];
+const composingAnimations = [
+  { page: 'Delay' },
+  { page: 'Parallel' },
+  { page: 'Sequence' }
+];
 
 const otherAnimations = [{ page: 'Filp' }];
 
