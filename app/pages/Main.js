@@ -46,7 +46,8 @@ const configuringAnimations = [
 const composingAnimations = [
   { page: 'Delay' },
   { page: 'Parallel' },
-  { page: 'Sequence' }
+  { page: 'Sequence' },
+  { page: 'Stagger' }
 ];
 
 const otherAnimations = [{ page: 'Filp' }];

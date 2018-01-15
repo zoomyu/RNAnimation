@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Animated } from 'react-native';
 
 import Button from '../components/Button';
 
-export default class AnimatedSequence extends Component<{}> {
+export default class AnimatedStagger extends Component<{}> {
   componentWillMount() {
     this.animatedValue_0 = new Animated.Value(0);
     this.animatedValue_1 = new Animated.Value(0);
@@ -27,7 +27,7 @@ export default class AnimatedSequence extends Component<{}> {
     this.animatedValue_1.setValue(0);
     this.animatedValue_2.setValue(0);
 
-    Animated.sequence([
+    Animated.stagger(1500, [
       this.animation_0,
       this.animation_1,
       this.animation_2

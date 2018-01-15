@@ -7,11 +7,6 @@ export default class AnimatedParallel extends Component<{}> {
   componentWillMount() {
     this.animated_Move = new Animated.Value(0);
     this.animated_Opacity = new Animated.Value(1);
-  }
-
-  onStartAnimation = () => {
-    this.animated_Move.setValue(0);
-    this.animated_Opacity.setValue(1);
     this.animationMove = Animated.timing(this.animated_Move, {
       toValue: 300,
       duration: 5000
@@ -20,19 +15,20 @@ export default class AnimatedParallel extends Component<{}> {
       toValue: 0,
       duration: 5000
     });
+  }
+
+  onStartAnimation = () => {
+    this.animated_Move.setValue(0);
+    this.animated_Opacity.setValue(1);
     Animated.parallel([this.animationMove, this.animationOpacity]).start();
   };
 
   onStopMove = () => {
-    if (this.animationMove) {
-      this.animationMove.stop();
-    }
+    this.animationMove.stop();
   };
 
   onStopOpacity = () => {
-    if (this.animationOpacity) {
-      this.animationOpacity.stop();
-    }
+    this.animationOpacity.stop();
   };
 
   render() {
