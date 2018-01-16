@@ -30,6 +30,8 @@ export default class Main extends Component<{}> {
         {this.renderItems(configuringAnimations)}
         {this.renderTitle('Composing Animations')}
         {this.renderItems(composingAnimations)}
+        {this.renderTitle('Combining animated values')}
+        {this.renderItems(combiningAnimatedValues)}
         {this.renderTitle('Other Animations')}
         {this.renderItems(otherAnimations)}
       </ScrollView>
@@ -48,6 +50,13 @@ const composingAnimations = [
   { page: 'Parallel' },
   { page: 'Sequence' },
   { page: 'Stagger' }
+];
+
+const combiningAnimatedValues = [
+  { page: 'Add' },
+  { page: 'Divide' },
+  { page: 'Modulo' },
+  { page: 'Multiply' }
 ];
 
 const otherAnimations = [{ page: 'Filp' }];
