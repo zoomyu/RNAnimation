@@ -32,6 +32,8 @@ export default class Main extends Component<{}> {
         {this.renderItems(composingAnimations)}
         {this.renderTitle('Combining animated values')}
         {this.renderItems(combiningAnimatedValues)}
+        {this.renderTitle('Interpolation')}
+        {this.renderItems(interpolation)}
         {this.renderTitle('Other Animations')}
         {this.renderItems(otherAnimations)}
       </ScrollView>
@@ -58,6 +60,8 @@ const combiningAnimatedValues = [
   { page: 'Modulo' },
   { page: 'Multiply' }
 ];
+
+const interpolation = [{ page: 'InterpolationValue' }];
 
 const otherAnimations = [{ page: 'Filp' }];
 

@@ -15,6 +15,7 @@ import Divide from './pages/Animated_Divide';
 import Modulo from './pages/Animated_Modulo';
 import Multiply from './pages/Animated_Multiply';
 
+import InterpolationValue from './pages/Animated_Interpolation_Value';
 import Filp from './pages/Filp';
 
 const Navigators = StackNavigator(
@@ -31,6 +32,7 @@ const Navigators = StackNavigator(
     Divide: { screen: Divide },
     Modulo: { screen: Modulo },
     Multiply: { screen: Multiply },
+    InterpolationValue: { screen: InterpolationValue },
     Filp: { screen: Filp }
   },
   {
