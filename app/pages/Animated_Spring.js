@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-  Animated,
-  Dimensions
-} from 'react-native';
-import Button from '../components/Button';
+import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
+
+import { Button, Warning } from '../components';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const warning =
   'You can define one of bounciness/speed, tension/friction, ' +
   'or stiffness/damping/mass, but not more than one.';
-const warningImage = require('../img/ic_warning.png');
 
 export default class AnimatedSpring extends Component<{}> {
   componentWillMount() {
@@ -107,10 +100,7 @@ export default class AnimatedSpring extends Component<{}> {
             'stiffness/damping/mass'
           )}
         </View>
-        <View style={styles.warningBox}>
-          <Image style={styles.icon} source={warningImage} />
-          <Text style={styles.text}>{warning}</Text>
-        </View>
+        <Warning text={warning} />
         {this.renderTag()}
       </View>
     );
@@ -146,19 +136,6 @@ const styles = StyleSheet.create({
   animatedView: {
     flexDirection: 'row',
     marginTop: 8
-  },
-  warningBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: 8,
-    padding: 8,
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    borderRadius: 8
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    tintColor: 'red'
   },
   text: {
     flex: 1,

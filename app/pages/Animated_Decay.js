@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Animated, PanResponder } from 'react-native';
 
-import Button from '../components/Button';
+import { Button } from '../components';
 
 export default class AnimatedDecay extends Component {
   componentWillMount() {

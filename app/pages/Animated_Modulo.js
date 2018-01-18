@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Image,
   StyleSheet,
   Animated,
   Dimensions,
   Easing
 } from 'react-native';
 
-import Button from '../components/Button';
+import { Button, Warning } from '../components';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 const warning =
   'Creates a new Animated value that is the (non-negative, non-animatedValue)' +
   ' modulo of the provided Animated value';
-const warningImage = require('../img/ic_warning.png');
 
 export default class AnimatedModulo extends Component {
   componentWillMount() {
@@ -80,10 +78,7 @@ export default class AnimatedModulo extends Component {
           text="Restart"
           onPress={() => this.onStartAnimation()}
         />
-        <View style={styles.warningBox}>
-          <Image style={styles.icon} source={warningImage} />
-          <Text style={styles.warningText}>{warning}</Text>
-        </View>
+        <Warning text={warning} />
         {this.renderTag()}
       </View>
     );
@@ -123,24 +118,6 @@ const styles = StyleSheet.create({
     margin: 8
   },
   text: {
-    color: 'white'
-  },
-  warningBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: 8,
-    padding: 8,
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    borderRadius: 8
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    tintColor: 'red'
-  },
-  warningText: {
-    flex: 1,
-    margin: 8,
     color: 'white'
   }
 });

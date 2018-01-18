@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 
-import Button from '../components/Button';
+import { Button } from '../components';
 
 export default class AnimatedStagger extends Component<{}> {
   componentWillMount() {
