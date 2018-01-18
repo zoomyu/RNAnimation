@@ -16,6 +16,9 @@ import Modulo from './pages/Animated_Modulo';
 import Multiply from './pages/Animated_Multiply';
 
 import InterpolationValue from './pages/Animated_Interpolation_Value';
+import InterpolationColor from './pages/Animated_Interpolation_Color';
+import InterpolationRotation from './pages/Animated_Interpolation_Rotation';
+
 import Filp from './pages/Filp';
 
 const Navigators = StackNavigator(
@@ -33,6 +36,8 @@ const Navigators = StackNavigator(
     Modulo: { screen: Modulo },
     Multiply: { screen: Multiply },
     InterpolationValue: { screen: InterpolationValue },
+    InterpolationColor: { screen: InterpolationColor },
+    InterpolationRotation: { screen: InterpolationRotation },
     Filp: { screen: Filp }
   },
   {

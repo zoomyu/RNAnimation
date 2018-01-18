@@ -61,7 +61,11 @@ const combiningAnimatedValues = [
   { page: 'Multiply' }
 ];
 
-const interpolation = [{ page: 'InterpolationValue' }];
+const interpolation = [
+  { page: 'InterpolationValue' },
+  { page: 'InterpolationColor' },
+  { page: 'InterpolationRotation' }
+];
 
 const otherAnimations = [{ page: 'Filp' }];
 
