@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,17 @@ export default class Button extends Component {
     onPress: () => {}
   };
   static propTypes = {
-    style: View.propTypes.style,
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number,
+          PropTypes.object
+        ])
+      )
+    ]),
     text: PropTypes.string,
     onPress: PropTypes.func
   };

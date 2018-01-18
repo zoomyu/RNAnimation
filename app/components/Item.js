@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 const arrow = require('../img/ic_arrow_right.png');
@@ -11,7 +11,17 @@ export default class Item extends Component<{}> {
     onClick: () => {}
   };
   static propTypes = {
-    style: View.propTypes.style,
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number,
+          PropTypes.object
+        ])
+      )
+    ]),
     text: PropTypes.string,
     onClick: PropTypes.func
   };
