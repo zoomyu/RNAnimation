@@ -19,6 +19,9 @@ import InterpolationValue from './pages/Animated_Interpolation_Value';
 import InterpolationColor from './pages/Animated_Interpolation_Color';
 import InterpolationRotation from './pages/Animated_Interpolation_Rotation';
 
+import Event from './pages/Animated_Event';
+import Loop from './pages/Animated_Loop';
+
 import Filp from './pages/Filp';
 
 const Navigators = StackNavigator(
@@ -38,6 +41,8 @@ const Navigators = StackNavigator(
     InterpolationValue: { screen: InterpolationValue },
     InterpolationColor: { screen: InterpolationColor },
     InterpolationRotation: { screen: InterpolationRotation },
+    Event: { screen: Event },
+    Loop: { screen: Loop },
     Filp: { screen: Filp }
   },
   {

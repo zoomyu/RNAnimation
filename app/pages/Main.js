@@ -67,7 +67,7 @@ const interpolation = [
   { page: 'InterpolationRotation' }
 ];
 
-const otherAnimations = [{ page: 'Filp' }];
+const otherAnimations = [{ page: 'Event' }, { page: 'Loop' }, { page: 'Filp' }];
 
 const styles = StyleSheet.create({
   container: {
