@@ -22,6 +22,7 @@ import InterpolationRotation from './pages/Animated_Interpolation_Rotation';
 import Event from './pages/Animated_Event';
 import Loop from './pages/Animated_Loop';
 import DiffClamp from './pages/Animated_DiffClamp';
+import AttachNativeEvent from './pages/Animated_AttachNativeEvent';
 
 import Filp from './pages/Filp';
 
@@ -45,6 +46,7 @@ const Navigators = StackNavigator(
     Event: { screen: Event },
     Loop: { screen: Loop },
     DiffClamp: { screen: DiffClamp },
+    AttachNativeEvent: { screen: AttachNativeEvent },
     Filp: { screen: Filp }
   },
   {

@@ -71,6 +71,7 @@ const otherAnimations = [
   { page: 'Event' },
   { page: 'Loop' },
   { page: 'DiffClamp' },
+  { page: 'AttachNativeEvent' },
   { page: 'Filp' }
 ];
 
