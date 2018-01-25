@@ -72,7 +72,8 @@ const otherAnimations = [
   { page: 'Loop' },
   { page: 'DiffClamp' },
   { page: 'AttachNativeEvent' },
-  { page: 'Filp' }
+  { page: 'Filp' },
+  { page: 'AboutYou' }
 ];
 
 const styles = StyleSheet.create({
