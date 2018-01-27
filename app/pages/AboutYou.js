@@ -17,6 +17,9 @@ const womanHeaderInactiveIcon = require('../img/header_woman_inactive.png');
 const man = require('../img/man.png');
 const woman = require('../img/woman.png');
 
+const ruler = require('../img/ruler.png');
+const rulerPoint = require('../img/ruler_point.png');
+
 export default class AboutYou extends Component {
   static navigationOptions = () => ({
     header: null
@@ -81,7 +84,32 @@ export default class AboutYou extends Component {
     return (
       <View style={styles.humanBox}>
         {this.renderIconSwitch()}
+        {this.renderRuler()}
+        {this.renderRulerPoint()}
         <Image source={source} />
+      </View>
+    );
+  };
+
+  renderRuler = () => (
+    <View style={styles.rulerBox}>
+      <Image resizeMode="contain" style={styles.ruler} source={ruler} />
+    </View>
+  );
+
+  renderRulerPoint = () => {
+    const bottom = 40;
+    return (
+      <View pointerEvents="none" style={[styles.rulerPointBox, { bottom }]}>
+        <Image
+          style={styles.rulerPoint}
+          resizeMode="stretch"
+          source={rulerPoint}
+        />
+        <Text style={styles.text}>
+          118
+          <Text style={styles.unitText}> cm</Text>
+        </Text>
       </View>
     );
   };
@@ -143,5 +171,37 @@ const styles = StyleSheet.create({
   humanBox: {
     flex: 1,
     alignItems: 'center'
+  },
+  rulerBox: {
+    position: 'absolute',
+    bottom: 8,
+    right: 16,
+    width: screenHeight / 20,
+    height: screenHeight / 2
+  },
+  ruler: {
+    width: screenHeight / 20,
+    height: screenHeight / 2
+  },
+  rulerPointBox: {
+    position: 'absolute',
+    bottom: 16,
+    width: '100%',
+    height: 40
+  },
+  rulerPoint: {
+    width: screenWidth,
+    height: 16
+  },
+  text: {
+    marginLeft: 16,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000'
+  },
+  unitText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333'
   }
 });
