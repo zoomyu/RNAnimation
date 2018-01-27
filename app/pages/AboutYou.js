@@ -5,7 +5,8 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  PanResponder
 } from 'react-native';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
@@ -16,9 +17,13 @@ const womanHeaderActiveIcon = require('../img/header_woman.png');
 const womanHeaderInactiveIcon = require('../img/header_woman_inactive.png');
 const man = require('../img/man.png');
 const woman = require('../img/woman.png');
-
+const shadow = require('../img/shadow.png');
 const ruler = require('../img/ruler.png');
 const rulerPoint = require('../img/ruler_point.png');
+
+// const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+
+const scaleHeight = screenHeight / 207;
 
 export default class AboutYou extends Component {
   static navigationOptions = () => ({
@@ -28,9 +33,40 @@ export default class AboutYou extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sex: 'male'
+      sex: 'male',
+      height: 175
     };
   }
+
+  componentWillMount() {
+    this.rulerResponder = PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponderCapture: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponderCapture: () => true,
+      onPanResponderGrant: this.onRulerGrant,
+      onPanResponderMove: this.onRulerMove,
+      onPanResponderRelease: this.onRulerRelease
+    });
+  }
+
+  onRulerGrant = (e) => {
+    this.startHeight = 200 - e.nativeEvent.locationY / scaleHeight;
+    this.touchStart = e.nativeEvent.pageY;
+    this.setState({
+      height: this.startHeight
+    });
+  };
+
+  onRulerMove = (e) => {
+    const movingDistance = this.touchStart - e.nativeEvent.pageY;
+    const endHeight = this.startHeight + movingDistance / scaleHeight;
+    this.setState({
+      height: endHeight
+    });
+  };
+
+  onRulerRelease = () => {};
 
   onToggleSex = (sex) => {
     if (this.state.sex === sex) {
@@ -81,24 +117,36 @@ export default class AboutYou extends Component {
     if (this.state.sex === 'female') {
       source = woman;
     }
+    const height = (this.state.height - 100) * scaleHeight;
+    const width = 130;
     return (
       <View style={styles.humanBox}>
         {this.renderIconSwitch()}
         {this.renderRuler()}
         {this.renderRulerPoint()}
-        <Image source={source} />
+        <Image style={styles.shadow} source={shadow} />
+        <Image
+          resizeMode="stretch"
+          style={[styles.human, { width, height }]}
+          source={source}
+        />
       </View>
     );
   };
 
   renderRuler = () => (
     <View style={styles.rulerBox}>
-      <Image resizeMode="contain" style={styles.ruler} source={ruler} />
+      <Image
+        resizeMode="contain"
+        style={styles.ruler}
+        source={ruler}
+        {...this.rulerResponder.panHandlers}
+      />
     </View>
   );
 
   renderRulerPoint = () => {
-    const bottom = 40;
+    const bottom = (this.state.height - 100) * scaleHeight - 16;
     return (
       <View pointerEvents="none" style={[styles.rulerPointBox, { bottom }]}>
         <Image
@@ -107,7 +155,7 @@ export default class AboutYou extends Component {
           source={rulerPoint}
         />
         <Text style={styles.text}>
-          118
+          {Math.round(this.state.height)}
           <Text style={styles.unitText}> cm</Text>
         </Text>
       </View>
@@ -171,6 +219,14 @@ const styles = StyleSheet.create({
   humanBox: {
     flex: 1,
     alignItems: 'center'
+  },
+  shadow: {
+    position: 'absolute',
+    bottom: 0
+  },
+  human: {
+    position: 'absolute',
+    bottom: 12
   },
   rulerBox: {
     position: 'absolute',
