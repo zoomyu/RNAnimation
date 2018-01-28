@@ -20,10 +20,11 @@ const woman = require('../img/woman.png');
 const shadow = require('../img/shadow.png');
 const ruler = require('../img/ruler.png');
 const rulerPoint = require('../img/ruler_point.png');
-
-// const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+const weightscale = require('../img/weight_scale.png');
+const weightpoint = require('../img/weight_point.png');
 
 const scaleHeight = screenHeight / 207;
+const radius = screenWidth / 2 / Math.sin(Math.PI / 3); // radius
 
 export default class AboutYou extends Component {
   static navigationOptions = () => ({
@@ -34,7 +35,8 @@ export default class AboutYou extends Component {
     super(props);
     this.state = {
       sex: 'male',
-      height: 175
+      height: 175,
+      radian: 0
     };
   }
 
@@ -47,6 +49,15 @@ export default class AboutYou extends Component {
       onPanResponderGrant: this.onRulerGrant,
       onPanResponderMove: this.onRulerMove,
       onPanResponderRelease: this.onRulerRelease
+    });
+    this.weightResponder = PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponderCapture: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponderCapture: () => true,
+      onPanResponderGrant: this.onWeightGrant,
+      onPanResponderMove: this.onWeightMove,
+      onPanResponderRelease: this.onWeightRelease
     });
   }
 
@@ -68,6 +79,25 @@ export default class AboutYou extends Component {
 
   onRulerRelease = () => {};
 
+  onWeightGrant = (e) => {
+    const tan =
+      (e.nativeEvent.pageX - screenWidth / 2) /
+      (screenHeight - e.nativeEvent.pageY + radius - screenWidth / 3);
+    this.startRadian = Math.atan(tan) - this.state.radian;
+  };
+
+  onWeightMove = (e) => {
+    const tan =
+      (e.nativeEvent.pageX - screenWidth / 2) /
+      (screenHeight - e.nativeEvent.pageY + radius - screenWidth / 3);
+    this.endRadian = Math.atan(tan);
+    this.setState({
+      radian: this.endRadian - this.startRadian
+    });
+  };
+
+  onWeightRelease = () => {};
+
   onToggleSex = (sex) => {
     if (this.state.sex === sex) {
       return;
@@ -75,6 +105,15 @@ export default class AboutYou extends Component {
     this.setState({
       sex
     });
+  };
+
+  getWeight = () => {
+    let weight =
+      (60 - Math.ceil(this.state.radian * 360 / (2 * Math.PI))) % 360;
+    if (weight < 0) {
+      weight = 360 + weight;
+    }
+    return weight;
   };
 
   renderHeader = () => (
@@ -118,7 +157,7 @@ export default class AboutYou extends Component {
       source = woman;
     }
     const height = (this.state.height - 100) * scaleHeight;
-    const width = 130;
+    const width = this.getWeight() / 60 * 130;
     return (
       <View style={styles.humanBox}>
         {this.renderIconSwitch()}
@@ -154,9 +193,34 @@ export default class AboutYou extends Component {
           resizeMode="stretch"
           source={rulerPoint}
         />
-        <Text style={styles.text}>
+        <Text style={styles.weightText}>
           {Math.round(this.state.height)}
           <Text style={styles.unitText}> cm</Text>
+        </Text>
+      </View>
+    );
+  };
+
+  renderWeightscale = () => {
+    const weight = this.getWeight();
+    return (
+      <View style={styles.weightscaleBox}>
+        <Image
+          style={[
+            styles.weightscale,
+            { transform: [{ rotate: `${this.state.radian}rad` }] }
+          ]}
+          source={weightscale}
+          {...this.weightResponder.panHandlers}
+        />
+        <Image
+          resizeMode="contain"
+          style={styles.weightpoint}
+          source={weightpoint}
+        />
+        <Text style={styles.text}>
+          {weight}
+          <Text style={styles.unitText}> kg</Text>
         </Text>
       </View>
     );
@@ -167,6 +231,7 @@ export default class AboutYou extends Component {
       <View style={styles.container}>
         {this.renderHeader()}
         {this.renderHuman()}
+        {this.renderWeightscale()}
       </View>
     );
   }
@@ -259,5 +324,26 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333'
+  },
+  weightscaleBox: {
+    marginTop: 16,
+    width: screenWidth,
+    height: screenWidth / 3,
+    alignItems: 'center'
+  },
+  weightscale: {
+    width: 2 * radius,
+    height: 2 * radius
+  },
+  weightpoint: {
+    position: 'absolute',
+    height: 64
+  },
+  weightText: {
+    position: 'absolute',
+    bottom: 8,
+    color: '#000',
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 });
