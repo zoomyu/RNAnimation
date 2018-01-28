@@ -24,6 +24,7 @@ import Loop from './pages/Animated_Loop';
 import DiffClamp from './pages/Animated_DiffClamp';
 import AttachNativeEvent from './pages/Animated_AttachNativeEvent';
 
+import AboutYou from './pages/AboutYou';
 import Filp from './pages/Filp';
 
 const Navigators = StackNavigator(
@@ -47,6 +48,7 @@ const Navigators = StackNavigator(
     Loop: { screen: Loop },
     DiffClamp: { screen: DiffClamp },
     AttachNativeEvent: { screen: AttachNativeEvent },
+    AboutYou: { screen: AboutYou },
     Filp: { screen: Filp }
   },
   {
